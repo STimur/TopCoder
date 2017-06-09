@@ -1,7 +1,8 @@
+package AB;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by tsalakhe on 09.06.2017.

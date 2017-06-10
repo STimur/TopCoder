@@ -1,7 +1,6 @@
 package AB;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Created by tsalakhe on 09.06.2017.
@@ -20,10 +19,36 @@ public class AB {
             Arrays.fill(chars, 'A');
             return new String(chars);
         }
-        return String.join("", Collections.nCopies(numOfABPairs, "AB"));
+        if (numOfABPairs < len) {
+            char[] chars = new char[len];
+            Arrays.fill(chars, 0, 1, 'A');
+            Arrays.fill(chars, 1, numOfABPairs + 1, 'B');
+            Arrays.fill(chars, numOfABPairs + 1, len, 'A');
+            return new String(chars);
+        } else {
+            char[] chars = new char[len];
+            Arrays.fill(chars, 0, 1, 'A');
+            Arrays.fill(chars, 1, len, 'B');
+
+            int currentNumberOfPairs = len - 1;
+            int numberOfPairsToAdd = numOfABPairs - currentNumberOfPairs;
+            int indexToInsertA = 1;
+            int newPairsCreated = len - 2 - indexToInsertA;
+
+            while (numberOfPairsToAdd != 0) {
+                if (numberOfPairsToAdd >= newPairsCreated) {
+                    chars[indexToInsertA] = 'A';
+                    numberOfPairsToAdd -= newPairsCreated;
+                }
+                indexToInsertA++;
+                newPairsCreated = len - 2 - indexToInsertA;
+            }
+
+            return new String(chars);
+        }
     }
 
     private boolean isPossibleNumberOfABPairs() {
-        return numOfABPairs <= ((int)Math.ceil(len/2)) * ((int)Math.floor(len/2));
+        return numOfABPairs <= ((int)Math.ceil(len/2.0)) * ((int)Math.floor(len/2.0));
     }
 }

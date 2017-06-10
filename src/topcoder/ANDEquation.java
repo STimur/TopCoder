@@ -1,4 +1,4 @@
-package ANDEquation;
+package topcoder;
 
 import java.util.Arrays;
 

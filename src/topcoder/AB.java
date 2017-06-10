@@ -1,4 +1,4 @@
-package AB;
+package topcoder;
 
 import java.util.Arrays;
 
